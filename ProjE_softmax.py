@@ -625,7 +625,7 @@ def main(_):
                 ninst += len(hr_tlist) + len(tr_hlist)
 
                 if ninst % (5000) is not None:
-                    print('[%d sec](%d/%d) : %.2f -- loss : %.5f rloss: %.5f ' % (timeit.default_timer() - start_time, ninst, total_inst, float(ninst) / total_inst, l / (len(hr_tlist)+len(tr_hlist)),args.loss_weight * (rl / (len(hr_tlist) + len(tr_hlist)))), end)
+                    print('[%d sec](%d/%d) : %.2f -- loss : %.5f rloss: %.5f ' % (timeit.default_timer() - start_time, ninst, total_inst, float(ninst) / total_inst, l / (len(hr_tlist)+len(tr_hlist)),args.loss_weight * (rl / (len(hr_tlist) + len(tr_hlist)))))
             print("")
             print("iter %d avg loss %.5f, time %.3f" % (n_iter, accu_loss / ninst, timeit.default_timer() - start_time))
 
