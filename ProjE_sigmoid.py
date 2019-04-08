@@ -314,13 +314,13 @@ class ProjE:
 
             hrt_loss = -tf.reduce_sum(
                 tf.log(tf.clip_by_value(hrt_res_sigmoid, 1e-10, 1.0)) * tf.maximum(0., hr_tlist_weight)
-                + tf.log(tf.clip_by_value(1 - hrt_res_sigmoid, 1e-10, 1.0)) * tf.maximum(0., tf.neg(hr_tlist_weight)))
+                + tf.log(tf.clip_by_value(1 - hrt_res_sigmoid, 1e-10, 1.0)) * tf.maximum(0., tf.negative(hr_tlist_weight)))
 
             trh_res_sigmoid = tf.sigmoid(trh_res)
 
             trh_loss = -tf.reduce_sum(
                 tf.log(tf.clip_by_value(trh_res_sigmoid, 1e-10, 1.0)) * tf.maximum(0., tr_hlist_weight)
-                + tf.log(tf.clip_by_value(1 - trh_res_sigmoid, 1e-10, 1.0)) * tf.maximum(0., tf.neg(tr_hlist_weight)))
+                + tf.log(tf.clip_by_value(1 - trh_res_sigmoid, 1e-10, 1.0)) * tf.maximum(0., tf.negative(tr_hlist_weight)))
 
             return hrt_loss + trh_loss + regularizer_loss * regularizer_weight
 
