@@ -361,7 +361,7 @@ class ProjE:
             return head_ids, tail_ids
 
 
-def train_ops(model:ProjE, learning_rate=0.1, optimizer_str='gradient', regularizer_weight=1.0):
+def train_ops(model: ProjE, learning_rate=0.1, optimizer_str='gradient', regularizer_weight=1.0):
     with tf.device('/cpu'):
         train_hrt_input = tf.placeholder(tf.int32, [None, 2])
         train_hrt_weight = tf.placeholder(tf.float32, [None, model.n_entity])
@@ -386,7 +386,7 @@ def train_ops(model:ProjE, learning_rate=0.1, optimizer_str='gradient', regulari
         return train_hrt_input, train_hrt_weight, train_trh_input, train_trh_weight, loss, op_train
 
 
-def test_ops(model:ProjE):
+def test_ops(model: ProjE):
     with tf.device('/cpu'):
         test_input = tf.placeholder(tf.int32, [None, 3])
         head_ids, tail_ids = model.test(test_input)
@@ -394,7 +394,7 @@ def test_ops(model:ProjE):
     return test_input, head_ids, tail_ids
 
 
-def worker_func(in_queue:JoinableQueue, out_queue:Queue, hr_t, tr_h):
+def worker_func(in_queue: JoinableQueue, out_queue: Queue, hr_t, tr_h):
     while True:
         dat = in_queue.get()
         if dat is None:
@@ -405,7 +405,7 @@ def worker_func(in_queue:JoinableQueue, out_queue:Queue, hr_t, tr_h):
         in_queue.task_done()
 
 
-def data_generator_func(in_queue:JoinableQueue, out_queue:Queue, tr_h, hr_t, n_entity, neg_weight):
+def data_generator_func(in_queue: JoinableQueue, out_queue: Queue, tr_h, hr_t, n_entity, neg_weight):
     while True:
         dat = in_queue.get()
         if dat is None:
@@ -625,7 +625,12 @@ def main(_):
                 ninst += len(hr_tlist) + len(tr_hlist)
 
                 if ninst % (5000) is not None:
-                    print('[%d sec](%d/%d) : %.2f -- loss : %.5f rloss: %.5f ' % (timeit.default_timer() - start_time, ninst, total_inst, float(ninst) / total_inst, l / (len(hr_tlist)+len(tr_hlist)),args.loss_weight * (rl / (len(hr_tlist) + len(tr_hlist)))))
+                    print(
+                        '[%d sec](%d/%d) : %.2f -- loss : %.5f rloss: %.5f ' % (
+                            timeit.default_timer() - start_time, ninst, total_inst, float(ninst) / total_inst,
+                            l / (len(hr_tlist) + len(tr_hlist)),
+                            args.loss_weight * (rl / (len(hr_tlist) + len(tr_hlist)))),
+                        end='\r')
             print("")
             print("iter %d avg loss %.5f, time %.3f" % (n_iter, accu_loss / ninst, timeit.default_timer() - start_time))
 
