@@ -15,11 +15,12 @@ https://github.com/bxshi/ProjE
 	- Output: Saved Tensorflow model
 
 ## Evalution
-- 	FreeBase 15k (FB15k)
-	YAGO
+- Datasets
+	- FreeBase 15k (FB15k)
+	- YAGO
 - Evaluation metrics and results
-	Mean Rank (MR)
-	HITS@10
+	- Mean Rank (MR)
+	- HITS@10
 
 ## Demo
 - Link to the Jupyter Notebook 
