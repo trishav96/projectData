@@ -1,4 +1,4 @@
-Graph Embedding
+## Graph Embedding
 - ProjE: Embedding Projection for Knowledge Graph Completion
 - Full citation
 
@@ -11,8 +11,8 @@ https://github.com/bxshi/ProjE
 
 ## Input and Output
 - Input and output for Training
-	Input: Knowledge Graph
-	Output: Saved Tensorflow model
+	- Input: Knowledge Graph
+	- Output: Saved Tensorflow model
 
 ## Evalution
 - 	FreeBase 15k (FB15k)
